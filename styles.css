@@ -24,7 +24,6 @@ h1 {
 }
 input,
 button {
-  width: 80%;
   border: none;
   border-radius: 8px;
   padding: 10px 12px;
