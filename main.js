@@ -62,6 +62,7 @@ const createTaskElement = (task) => {
   taskCheckbox.type = 'checkbox'
   // la propiedad del elemento checkbox, va a ser igual al valor de nuestro objeto task.isCompleted
   taskCheckbox.checked = task.isCompleted
+  taskCheckbox.classList.add('task-checkbox')
   taskCheckbox.addEventListener('change', () => {
     task.isCompleted = taskCheckbox.checked
     // .toggle es un metodo para intercambiar clases de css cuando se fuerza (2do parametro) a ello.
@@ -71,12 +72,13 @@ const createTaskElement = (task) => {
   // creamos el elemento HTML que representa el texto de la tarea
   const taskText = document.createElement('span')
   taskText.textContent = task.title
+  taskText.classList.add('task-text')
   taskText.classList.toggle('completed', task.isCompleted)
 
   // creamos el elemento HTML que representa un boton para borrar la tarea
   const taskDeleteButton = document.createElement('button')
   taskDeleteButton.textContent = 'Delete'
-  taskDeleteButton.className = 'delete-button'
+  taskDeleteButton.className = 'task-delete-button'
   taskDeleteButton.addEventListener('click', () => {
     // eliminar task from list
   })
@@ -102,3 +104,10 @@ newTaskInputEl.addEventListener('keydown', (event) => {
   }
 })
 
+// todo - ajustar los estilos para los items en la lista
+// todo - media queries para tablet y desktop
+
+// todo - usar almacenamiento local para anyadir persistencia a los todos.
+// Para ello usamos la API webstorageapi que tiene 2 obj - session storage / local storage.
+
+// todo - eliminar tareas de la lista cuando se pulsa el boton borrar.

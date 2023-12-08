@@ -49,11 +49,29 @@ ul {
   padding: 0;
 }
 li {
-  background: white;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 8px;
+}
+
+.completed {
+  text-decoration: line-through;
+  background-color: #d4d4d4;
+}
+
+.task-checkbox {
+  margin: 0 1rem 0 0.5rem;
+}
+
+.task-text {
+  display: inline-block;
+  width: 100%;
+}
+
+.task-delete-button {
+  margin: 0 0.5rem 0 1rem;
 }
