@@ -15,6 +15,7 @@ h1 {
   text-align: center;
   margin: 1rem auto;
 }
+
 .app-container {
   width: 100vw;
   height: 100%;
@@ -22,17 +23,20 @@ h1 {
   flex-direction: column;
   gap: 2rem;
 }
+
 input,
 button {
   border: none;
   border-radius: 8px;
   padding: 10px 12px;
 }
+
 button {
   background-color: #843dcb;
   color: #f2f2f2;
   cursor: pointer;
 }
+
 .actions-section {
   padding: 10px;
   display: flex;
@@ -41,13 +45,23 @@ button {
   justify-content: center;
   gap: 1rem;
 }
+
+#new-task-input {
+  width: 100%;
+}
+#add-task-button {
+  width: 100%;
+}
+
 .list-section {
   padding: 10px;
 }
+
 ul {
   list-style: none;
   padding: 0;
 }
+
 li {
   background-color: white;
   display: flex;
@@ -74,4 +88,74 @@ li {
 
 .task-delete-button {
   margin: 0 0.5rem 0 1rem;
+}
+
+/*500-1200 M*/
+@media only screen and (min-width: 500px) and (max-width: 1199px) {
+  h1 {
+    font-size: 3em;
+  }
+
+  button {
+    background-color: #3d4bcb;
+  }
+
+  .actions-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  #new-task-input {
+    width: 50%;
+    padding: 15px 20px;
+  }
+
+  #add-task-button {
+    width: auto;
+  }
+
+  li {
+    margin-bottom: 1rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+
+/*>1200px L*/
+@media only screen and (min-width: 1200px) {
+  h1 {
+    font-size: 3.5em;
+  }
+
+  button {
+    background-color: #cb523d;
+  }
+
+  .actions-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  #new-task-input {
+    width: 60%;
+    padding: 15px 20px;
+  }
+
+  #add-task-button {
+    width: 200px;
+    padding: 15px 20px;
+    font-size: larger;
+  }
+
+  li {
+    margin-bottom: 1rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
 }

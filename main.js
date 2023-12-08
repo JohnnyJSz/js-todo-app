@@ -104,9 +104,6 @@ newTaskInputEl.addEventListener('keydown', (event) => {
   }
 })
 
-// todo - ajustar los estilos para los items en la lista
-// todo - media queries para tablet y desktop
-
 // todo - usar almacenamiento local para anyadir persistencia a los todos.
 // Para ello usamos la API webstorageapi que tiene 2 obj - session storage / local storage.
 
