@@ -13,6 +13,27 @@ const app = {
   newTaskInputEl,
 }
 
+// Funcion para guardar las tareas en el Local Storage
+const saveTaskToLocalStorage = (tasks) => {
+  localStorage.setItem('todo-tasks', JSON.stringify(tasks))
+}
+
+// window.onload es una funcion que se ejecuta inmediatamente cuando el navegador carga js
+window.onload = () => {
+  // almacenamos en una constante las tareas del Local Storage, si no hay, almacenamos un array vacio.
+  const savedTasks = JSON.parse(localStorage.getItem('todo-tasks')) || []
+
+  // Guardamos las tareas del LS en app.tasks, mapeamos el array para convertir cada tarea usando createTask
+  app.tasks = savedTasks.map((task) => {
+    return createTask(task.title, task.isCompleted)
+  })
+
+  // Una vez tenemos todas nuestras tareas, hacemos un loop de ellas para con cada una usar la funcion addTaskToList
+  app.tasks.forEach((task) => {
+    return addTaskToList(task, app.taskListEl)
+  })
+}
+
 // Esta funcion nos va a permitir anyadir tareas
 // recibe por parametros el titulo y un booleano de si la tarea esta completada, por defecto es falso
 const createTask = (title, isCompleted = false) => {
@@ -45,6 +66,10 @@ const addTask = (app) => {
   app.tasks.push(newTask)
   // esta funcion hace que se vea en el DOM el elemento que simboliza la tarea dentro del nodo lista de tareas
   addTaskToList(newTask, app.taskListEl)
+
+  // Una vez que anyadimos tareas al array y las anyadimos a la lista, es buen momento para guardarlas en LS
+  saveTaskToLocalStorage(app.tasks)
+
   // para mejorar la UX, despues de anyadir una tarea al nodo lista de tareas
   // vamos a resetear el valor del input a un string vacio
   app.newTaskInputEl.value = ''
@@ -67,6 +92,9 @@ const createTaskElement = (task) => {
     task.isCompleted = taskCheckbox.checked
     // .toggle es un metodo para intercambiar clases de css cuando se fuerza (2do parametro) a ello.
     taskText.classList.toggle('completed', task.isCompleted)
+
+    // Guardamos el estado de las tareas, incluso cuando las marcamos como completadas, en Locale Storage
+    saveTaskToLocalStorage(app.tasks)
   })
 
   // creamos el elemento HTML que representa el texto de la tarea
@@ -87,7 +115,9 @@ const createTaskElement = (task) => {
     const taskElIndex = app.tasks.findIndex(() => taskEl)
     if (taskElIndex > -1) {
       app.tasks.splice(taskElIndex, 1)
-    } 
+    }
+    // Guardamos el estado de las tareas, incluso cuando las borramos, en Locale Storage
+    saveTaskToLocalStorage(app.tasks)
   })
 
   // Incluimos los elementos previamente creados al nodo tarea
