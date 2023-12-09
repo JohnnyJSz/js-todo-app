@@ -74,7 +74,6 @@ li {
 
 .completed {
   text-decoration: line-through;
-  background-color: #d4d4d4;
 }
 
 .task-checkbox {
@@ -144,13 +143,10 @@ li {
 
   #new-task-input {
     width: 60%;
-    padding: 15px 20px;
   }
 
   #add-task-button {
     width: 200px;
-    padding: 15px 20px;
-    font-size: larger;
   }
 
   li {

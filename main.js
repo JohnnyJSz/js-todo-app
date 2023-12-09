@@ -80,7 +80,14 @@ const createTaskElement = (task) => {
   taskDeleteButton.textContent = 'Delete'
   taskDeleteButton.className = 'task-delete-button'
   taskDeleteButton.addEventListener('click', () => {
-    // eliminar task from list
+    // Eliminar la tarea del documento o DOM
+    taskEl.remove()
+    // Eliminar la tarea del array de listas
+    // para poder borrar un elemento de un array necesitaria saber su indice.
+    const taskElIndex = app.tasks.findIndex(() => taskEl)
+    if (taskElIndex > -1) {
+      app.tasks.splice(taskElIndex, 1)
+    } 
   })
 
   // Incluimos los elementos previamente creados al nodo tarea
@@ -107,4 +114,8 @@ newTaskInputEl.addEventListener('keydown', (event) => {
 // todo - usar almacenamiento local para anyadir persistencia a los todos.
 // Para ello usamos la API webstorageapi que tiene 2 obj - session storage / local storage.
 
-// todo - eliminar tareas de la lista cuando se pulsa el boton borrar.
+// Cuando debemos anyadir local storage en nuestra aplicacion?
+// - Cuando el usuario carga la pagina por primera vez. entonces cargara tareas del LS si las hubiese y si no nada.
+// - Cuando el usuario crea una nueva tarea. La lista de tareas existentes deberia actualizarse y guardarse en LS.
+// - Cuando el usuario marca una tarea como completada, queremos que los datos sean persistentes y por ello debemos actualizar LS
+// - Cuando el usuario borra una tarea.
